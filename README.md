@@ -7,6 +7,8 @@ slmphi3small is a chatbot application powered by the Phi-3 language model. It fe
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+  - [CPU Version](#cpu-version)
+  - [DirectML Version](#directml-version)
 - [Switching Between CPU and DirectML](#switching-between-cpu-and-directml)
 - [Running the Application](#running-the-application)
 - [Troubleshooting](#troubleshooting)
@@ -69,31 +71,52 @@ Before you begin, ensure you have the following installed:
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
-3. Install Python dependencies:
+3. Install common Python dependencies:
    ```
    pip install flask flask-cors numpy
-   pip install --pre onnxruntime-genai  # For CPU version
-   # OR
-   pip install --pre onnxruntime-genai-directml  # For DirectML version
    ```
 
-4. Download the Phi-3 model:
-   For CPU:
+4. Install Hugging Face CLI:
+   ```
+   pip install huggingface_hub
+   ```
+
+### CPU Version
+
+5a. Install CPU-specific dependencies:
+   ```
+   pip install --pre onnxruntime-genai
+   ```
+
+6a. Download the Phi-3 model for CPU:
    ```
    huggingface-cli download microsoft/Phi-3-mini-4k-instruct-onnx --include cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4/* --local-dir .
    ```
-   For DirectML:
+
+### DirectML Version
+
+5b. Install DirectML-specific dependencies:
+   ```
+   pip install --pre onnxruntime-genai-directml
+   ```
+
+6b. Download the Phi-3 model for DirectML:
    ```
    huggingface-cli download microsoft/Phi-3-mini-4k-instruct-onnx --include directml/* --local-dir .
    ```
 
-5. Set up the frontend:
+7. Set up the frontend:
    ```
    cd frontend
    npm install react react-dom axios react-icons framer-motion
    npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
    npx tailwindcss init -p
    ```
+
+   This will:
+   - Install the necessary React packages and dependencies
+   - Install Tailwind CSS and its dependencies
+   - Initialize Tailwind CSS and create the configuration files
 
 ## Switching Between CPU and DirectML
 
@@ -109,7 +132,7 @@ For DirectML:
 command = f'python phi3-chat.py -m directml\directml-int4-awq-block-128'
 ```
 
-Make sure you have installed the corresponding Python package (`onnxruntime-genai` for CPU or `onnxruntime-genai-directml` for DirectML) as mentioned in the installation steps.
+Ensure you have installed the corresponding Python package (`onnxruntime-genai` for CPU or `onnxruntime-genai-directml` for DirectML) as mentioned in the installation steps.
 
 ## Running the Application
 
