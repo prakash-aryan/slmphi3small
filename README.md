@@ -18,7 +18,7 @@ slmphi3small is a chatbot application powered by the Phi-3 language model. It fe
 This project is based on the Phi-3 model and uses code from the [onnxruntime-genai](https://github.com/microsoft/onnxruntime-genai) repository by Microsoft. For the latest model and updates, please refer to their [Phi-3 tutorial](https://github.com/microsoft/onnxruntime-genai/blob/main/examples/python/phi-3-tutorial.md).
 
 ## Working Example
-<video src="examplechatbot.mp4.mp4" width="320" height="240" controls></video>
+https://github.com/prakash-aryan/slmphi3small/assets/53960016/0a8d4e2c-5df1-48b2-a10f-dda721bb2f3e
 
 ## Project Structure
 
